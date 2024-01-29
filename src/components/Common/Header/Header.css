@@ -7,6 +7,7 @@
     top: 0;
     left: 0;
     padding: 0vh 2vw;
+    background-color: var(--black);
 }
 .links{
     display: flex;

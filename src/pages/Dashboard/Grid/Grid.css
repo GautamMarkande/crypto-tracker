@@ -1,0 +1,112 @@
+.gird-container{
+    width:300px;
+    height:300px;
+    background-color: var(--darkgrey);
+    border: 2px solid var(--darkgrey);
+    border-radius: 0.75rem;
+    padding-top: 1.5em;
+}
+.left-flex{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin:0.5rem 1rem;
+}
+.name-flex{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+.coin-logo{
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+.coin-symbol,.coin-name{
+    margin: 0;
+    padding: 0;
+}
+.coin-symbol{
+    font-size: 1.2rem;
+    color: var(--white);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.coin-name{
+    font-size: 1rem;
+    color: var(--grey);
+    font-weight: 500;
+    text-transform: capitalize;
+}
+.price-chip{
+    margin: 1.5rem 1.5rem;
+}
+.percentChip{
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+}
+.pchip{
+    border: 2px solid var(--green);
+    /* width: fit-content; */
+    padding: 0.35rem 1.25rem;
+    color: var(--green);
+    border-radius: 1rem;
+    font-size: 1rem;
+    min-width: 3vw;
+}
+.pchip:hover{
+    background-color:var(--green);
+    color: var(--white);
+}
+.trendigUpIcon{
+    border: 2px solid var(--green);
+    color: var(--green);
+    border-radius: 50%;
+    padding: 0.10rem 0.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+
+}
+.trendigdownIcon{
+    border: 2px solid var(--red);
+    color: var(--red);
+    border-radius: 50%;
+    padding: 0.10rem 0.25rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.trendigUpIcon:hover{
+    background-color: var(--green);
+    color: var(--white);
+}
+.trendigdownIcon:hover{
+    background-color: var(--red);
+    color: var(--white);
+}
+.pchipRed{
+    color: var(--red);
+    border: 2px solid var(--red);
+}
+.pchipRed:hover{
+    background-color: var(--red);
+    color: var(--white);
+}
+.marketP{
+    color: var(--grey);
+}
+.redContainer,.GreenContainer{
+ border: none;
+}
+.redContainer:hover{
+    border: 0.5px solid var(--red);
+    /* padding: 0.5em; */
+    transition: all 0.3s;
+}
+.GreenContainer:hover{
+    border: 0.5px solid var(--green);
+    /* padding: 0.5em; */
+    transition: all 0.3s;
+}

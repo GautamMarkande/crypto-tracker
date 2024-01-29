@@ -1,5 +1,7 @@
+
 .grid_flex{
-    display:grid;
-    grid-template-columns: repeat(10,1fr);
+    display:flex;
+    flex-wrap: wrap;
     justify-content:center;
+    gap: 1.5rem;
 }

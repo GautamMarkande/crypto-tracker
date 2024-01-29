@@ -1,0 +1,27 @@
+.CoinInfoContainer{
+    background-color:var(--darkgrey);
+   display:flex;
+   flex-direction:column;
+   margin: auto;
+   padding: 1rem;
+   border-radius: 10px;
+   
+}
+.coinInfo_name{
+    margin: 0;
+    padding: 0;
+}
+.CoinInfo-desc{
+    margin: 0;
+    padding-top: 0.5rem;
+    cursor: pointer;
+}
+.CoinInfo-desc a{
+    text-decoration: underline;
+}
+.CoinInfo-desc a:hover{
+    color: var(--blue);
+}
+.SeeMore{
+    color: var(--grey) !important;
+}

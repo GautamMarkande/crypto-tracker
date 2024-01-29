@@ -1,0 +1,53 @@
+.gird-container-list{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1em;
+    border: 1px solid var(--black);
+    width: 90%;
+    margin-right:4em;
+}
+.gird-container-list td{
+    text-align: left;
+    width: 200px;
+}
+.gird-container-list:hover{
+    background-color: var(--darkgrey);
+    border: 1px solid var(--darkgrey);
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+.left-flex-list{
+    margin-left: 0 !important;
+}
+.price-chip-list{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
+}
+.list-flex{
+    width: 15vw;
+}
+.price-chip-list .marketP,.curr-price-list,.percentChip{
+    width: 18vw;
+}
+.marketP-responsive{
+    display:none;
+}
+@media screen and (max-width:900px) {
+    .marketP-responsive{
+        display:none;
+    }
+    .marketPList{
+        display: none !important;
+    }
+    .trendigUpIcon,.trendigdownIcon{
+        display: none;
+    }
+    .price-chip-list .marketP,.curr-price-list,.percentChip{
+        font-size: 10px;
+        width: 18vw;
+        margin: auto auto;
+    }
+}

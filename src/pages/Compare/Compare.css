@@ -1,0 +1,12 @@
+.selectBoxesContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+}
+.ComparePageContainer{
+    display:flex;
+    flex-direction:column;
+    gap:1em;
+    padding: 0px 2em;
+}

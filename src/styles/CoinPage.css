@@ -1,0 +1,23 @@
+.ListWrepperForInfoCoin{
+    display: flex;
+    flex-direction: column;
+    width: 96vw;
+    margin: auto;
+    margin-top: 5vh;
+    gap: 2vh;
+}
+.listContsinerCoinPage{
+    background-color: var(--darkgrey);
+    padding: 3vh 0vh;
+    border-radius: 10px;
+}
+.graph{
+    background-color: var(--darkgrey);
+    padding: 2em;
+}
+.toggle-pricetype-btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2em 0em;
+}

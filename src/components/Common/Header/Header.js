@@ -2,6 +2,7 @@ import React from 'react'
 import '../Header/Header.css'
 import TemporaryDrawer from './Drawer';
 import Button from '../Buttons/Button';
+import { Link } from 'react-router-dom';
 function Header() {
     return (
         <div className='headerContainer'>
@@ -11,18 +12,18 @@ function Header() {
                 </h1>
             </div>
             <div className="links">
-                <a href="/" className='link'>
+                <Link to="/" className='link'>
                     Home
-                </a>
-                <a href="/compare" assName='link'>
+                </Link>
+                <Link to="/compare" assName='link'>
                     Compare
-                </a>
-                <a href="/watchlist" assName='link'>
+                </Link>
+                <Link to="/watchlist" assName='link'>
                     Watchlist
-                </a>
-                <a href="/dashboard" assName='link'>
+                </Link>
+                <Link to="/dashboard" assName='link'>
                     <Button text={"Dashboard"} outlined={true} onClick={()=>console.log("Btn clicked")}/>
-                </a>
+                </Link>
             </div>
             <div className='menuIcon'>
                 <TemporaryDrawer/>

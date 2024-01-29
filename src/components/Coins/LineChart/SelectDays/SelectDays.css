@@ -1,0 +1,23 @@
+.selectMui{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+    margin: 1em;
+}
+.css-yjsfm1{
+color: var(--white) !important;
+}
+.selectCoinContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+@media screen and (max-width:900px) {
+    .selectMui{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}

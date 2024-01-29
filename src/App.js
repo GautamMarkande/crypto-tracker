@@ -4,6 +4,8 @@ import './App.css';
 import Header from './components/Common/Header/Header';
 import LandingPage from './components/LandingPages/MainComponent/LandingPage';
 import Dashboard from './pages/Dashboard/Dashboard';
+import CoinPage from './pages/CoinPage';
+import Compare from './pages/Compare/Compare';
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path='/coin/:id' element={<CoinPage/>}/>
+          <Route path='/compare' element={<Compare/>}/>
         </Routes>
       </BrowserRouter>
     </div>

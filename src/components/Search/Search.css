@@ -1,0 +1,20 @@
+.SerarchContainer{
+    margin: 2vh 7vw;
+    padding: 1em;
+    display: flex;
+    align-items: center;
+    background-color: var(--darkgrey);
+    border-radius: 50px;
+}
+.inputBoxSearch{
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: var(--grey);
+    font-size: 1.2rem;
+    width: 100%;
+}
+.searchIcon{
+    color: var(--grey);
+    font-size: 1.2rem;
+}

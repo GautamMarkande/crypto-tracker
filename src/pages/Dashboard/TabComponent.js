@@ -7,11 +7,13 @@ import TabPanel from '@mui/lab/TabPanel';
 import { createTheme,ThemeProvider } from '@mui/material';
 import { useState } from 'react';
 import Grid from './Grid/Grid';
+import List from './List/List';
+
 
 
 export default function TabComponent({coins}) {
     const [value, setValue] = useState('grid');
-
+    console.log(coins)
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -47,7 +49,17 @@ export default function TabComponent({coins}) {
                   </div>
                 }
             </TabPanel>
-            <TabPanel value="list">Item Two</TabPanel>
+            <TabPanel value="list" >
+            {
+                    <div className="grid_flex">
+                    {
+                      coins?.length>0&&coins?.map((coin)=>(
+                        <List coin={coin} key={coin.id}/>
+                      ))
+                    }
+                  </div>
+                }
+            </TabPanel>
         </TabContext>
         </ThemeProvider>
     );
