@@ -1,5 +1,6 @@
 import axios from "axios";
 export const GetCoinData = (id)=>{
+    console.log(id)
     const url = `https://api.coingecko.com/api/v3/coins/${id}`
     const myData = axios.get(url)
     .then((response) => {

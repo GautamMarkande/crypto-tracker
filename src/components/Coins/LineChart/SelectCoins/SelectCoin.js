@@ -1,8 +1,22 @@
-import  React  from 'react';
+import  React, { useEffect, useState }  from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import '../SelectDays/SelectDays.css';
-export default function SelectCoin({Allcoins,handleChangeCrypto,Crypto1,Crypto2}) {
+// import { GetCoinData } from '../../../../functions/GetCoinData';
+import Get200Coins from '../../../../functions/Get200Coins';
+export default function SelectCoin({handleChangeCrypto,Crypto1,Crypto2}) {
+    const[Allcoins,setAllcoins] = useState([])
+    async function getCoins(){
+        const coins = await Get200Coins()
+        console.log(coins)
+        if(coins)
+        setAllcoins(coins)
+    }
+    useEffect(()=>{
+      getCoins()
+    },[])
+
+    
   return (
     <div className="selectCoinContainer">
         <div className='selectMui'>
@@ -34,8 +48,8 @@ export default function SelectCoin({Allcoins,handleChangeCrypto,Crypto1,Crypto2}
           onChange={(event)=>handleChangeCrypto(event,true)}
         >
             {
-                Allcoins?.filter((crypto)=>crypto.id!==Crypto2).map((coin)=>(
-                  <MenuItem value={coin.id}>{coin.name}</MenuItem>
+                Allcoins?.filter((crypto)=>crypto.id!==Crypto2)?.map((coin)=>(
+                  <MenuItem value={coin?.id}>{coin?.name}</MenuItem>
                 ))
             }
         </Select>
@@ -69,8 +83,8 @@ export default function SelectCoin({Allcoins,handleChangeCrypto,Crypto1,Crypto2}
           onChange={(event)=>handleChangeCrypto(event,false)}
         >
             {
-                Allcoins?.filter((crypto)=>crypto.id!==Crypto1).map((coin)=>(
-                  <MenuItem value={coin.id}>{coin.name}</MenuItem>
+                Allcoins?.filter((crypto)=>crypto.id!==Crypto1)?.map((coin)=>(
+                  <MenuItem value={coin?.id}>{coin?.name}</MenuItem>
                 ))
             }
         </Select>

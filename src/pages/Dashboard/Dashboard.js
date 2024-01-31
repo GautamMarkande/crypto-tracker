@@ -36,9 +36,8 @@ function Dashboard() {
         console.log(coins)
       })
      .catch(Error=>{
-      // console.log(Error)
+      console.log(Error)
      })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   return (
     <div>

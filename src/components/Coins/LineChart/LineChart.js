@@ -3,11 +3,11 @@ import '../LineChart/LineChart.css';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
 import ConvertIntoKBM from '../../../functions/ConvertIntoKBM';
-function LineChart({ chartData, PriceType, multiAxis}) {
+function LineChart({ChartData,PriceType,multiAxis}) {
   const options = {
     plugins: {
       legend: {
-        display: multiAxis ? true : false
+        display: multiAxis?true:false
       }
     },
     responsive: true,
@@ -16,7 +16,8 @@ function LineChart({ chartData, PriceType, multiAxis}) {
       intersect: false
     },
     scales: {
-      Crypto1: {
+      crypto1: {
+        type:'linear',
         display: true,
         position: 'left',
         ticks: {
@@ -29,8 +30,9 @@ function LineChart({ chartData, PriceType, multiAxis}) {
           }
         }
       },
-      Crypto2: {
-        display: true,
+      crypto2: {
+        type:'linear',
+        display: multiAxis?true:false,
         position: 'right',
         ticks: {
           // Include a dollar sign in the ticks
@@ -45,7 +47,10 @@ function LineChart({ chartData, PriceType, multiAxis}) {
     }
   };
   return (
-    <Line data={chartData} options={options} />
+    <>
+    <Line data={ChartData} options={options} />
+    {/* {multiAxis&&<Line data={ChartData} options={options} />} */}
+    </>
   )
 }
 

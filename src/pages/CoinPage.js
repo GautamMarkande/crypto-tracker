@@ -15,11 +15,12 @@ function CoinPage() {
     const [CoinData, setCoinData] = useState()
     const [isLoading, setisLoading] = useState(true)
     const [days,setdays] = useState(30)
-    const [ChartData,setChartData] = useState()
+    const [ChartData,setChartData] = useState({})
     const [PriceType, setPriceType] = useState('prices');
+    const [SavePrice, setSavePrice] = useState([]);
     useEffect(() => {
-        setisLoading(true)
         async function getData(){
+            setisLoading(true)
             if(id){
                 const Coindata = await GetCoinData(id)
                 if(Coindata){
@@ -27,20 +28,19 @@ function CoinPage() {
                     setisLoading(false)
                 }
             }
-            setisLoading(false)
+            
         }
             getData()
     }, [])
     useEffect(()=>{
         async function getCoinprice(){
-            setisLoading(true)
+            // setisLoading(true)
             if(id){
                 const prices = await GetCoinPrice(id,days,PriceType);
                 console.log(prices);
-                if(prices?.length>0){
-                    setisLoading(false)
-                 SettingChartData(setChartData,prices)
-                }
+                // setSavePrice(prices)
+                 SettingChartData(setChartData,prices,false)
+                //  console.log(SavePrice)
             }
             setisLoading(false)
         }
@@ -56,18 +56,18 @@ function CoinPage() {
     //         }
     //     }
     // }
-    async function getCoinprice(){
-        setisLoading(true)
-        if(id){
-            const prices = await GetCoinPrice(id,days,PriceType);
-            console.log(prices);
-            if(prices?.length>0){
-                setisLoading(false)
-             SettingChartData(setChartData,prices)
-            }
-        }
+    // async function getCoinprice(){
+    //     setisLoading(true)
+    //     if(id){
+    //         const prices = await GetCoinPrice(id,days,PriceType);
+    //         console.log(prices);
+    //         if(prices?.length>0){
+    //             setisLoading(false)
+    //          SettingChartData(setChartData,prices,false)
+    //         }
+    //     }
 
-    }
+    // }
 
     
   const  handleDaysChange = async (event) => {
@@ -78,25 +78,25 @@ function CoinPage() {
         console.log(prices);
         if(prices.length>0){
             setisLoading(false)
-         SettingChartData(setChartData,prices)
+         SettingChartData(setChartData,prices,false)
         }
     }
   };
   
 
   const handleToggleChangePrice = async (event, newType) => {
-    setisLoading(true)
+    // setisLoading(true)
       setPriceType(newType);
       console.log(newType)
       if(id){
         const prices = await GetCoinPrice(id,days,newType);
+        SettingChartData(setChartData,prices)
         console.log(prices);
-        if(prices?.length>0){
-
-         SettingChartData(setChartData,prices)
-         setisLoading(false)
-        }
+        // if(prices?.length>0){
+         
+        // }
     }
+    setisLoading(false)
   };
        return( 
        <div>
@@ -111,7 +111,7 @@ function CoinPage() {
                         <div className='toggle-pricetype-btn'>
                             <TogglePriceType PriceType={PriceType} handleToggleChangePrice={handleToggleChangePrice}/>
                         </div>
-                        {ChartData&&<LineChart chartData={ChartData} PriceType={PriceType} multiAxis={false}/>}
+                        {ChartData&&<LineChart ChartData={ChartData} PriceType={PriceType} multiAxis={false}/>}
                     </div>
                         <CoinInfo Heading={CoinData?.name} desc={CoinData?.desc}/>
                     </div>
