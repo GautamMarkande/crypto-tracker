@@ -3,11 +3,11 @@ import '../LineChart/LineChart.css';
 import { Line } from 'react-chartjs-2';
 import { Chart as ChartJS } from 'chart.js/auto';
 import ConvertIntoKBM from '../../../functions/ConvertIntoKBM';
-function LineChart({ChartData,PriceType,multiAxis}) {
+function LineChart({ ChartData, PriceType, multiAxis }) {
   const options = {
     plugins: {
       legend: {
-        display: multiAxis?true:false
+        display: multiAxis ? true : false
       }
     },
     responsive: true,
@@ -17,11 +17,10 @@ function LineChart({ChartData,PriceType,multiAxis}) {
     },
     scales: {
       crypto1: {
-        type:'linear',
+        type: 'linear',
         display: true,
         position: 'left',
         ticks: {
-          // Include a dollar sign in the ticks
           callback: function (value, index, ticks) {
             if (PriceType === 'prices') { return '₹' + value?.toLocaleString(); }
             else {
@@ -31,11 +30,10 @@ function LineChart({ChartData,PriceType,multiAxis}) {
         }
       },
       crypto2: {
-        type:'linear',
-        display: multiAxis?true:false,
+        type: 'linear',
+        display: multiAxis ? true : false,
         position: 'right',
         ticks: {
-          // Include a dollar sign in the ticks
           callback: function (value, index, ticks) {
             if (PriceType === 'prices') { return '₹' + value?.toLocaleString(); }
             else {
@@ -48,8 +46,8 @@ function LineChart({ChartData,PriceType,multiAxis}) {
   };
   return (
     <>
-    <Line data={ChartData} options={options} />
-    {/* {multiAxis&&<Line data={ChartData} options={options} />} */}
+      <Line data={ChartData} options={options} />
+      {/* {multiAxis&&<Line data={ChartData} options={options} />} */}
     </>
   )
 }

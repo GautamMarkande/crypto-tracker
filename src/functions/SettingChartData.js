@@ -1,6 +1,6 @@
 import { ConvertDate } from "./ConvertDate"
 export const SettingChartData = (setChartData, prices1, prices2) => {
-  if (prices2) {
+  if (prices2?.length>0) {
     setChartData(
       {
         labels: prices1?.map((TimeInMs) => ConvertDate(TimeInMs[0])),

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import SelectCoin from '../../components/Coins/LineChart/SelectCoins/SelectCoin'
 import Get200Coins from '../../functions/Get200Coins'
 import SelectDays from '../../components/Coins/LineChart/SelectDays/SelectDays'
@@ -62,7 +62,6 @@ function Compare() {
     // }, [])
 
     // async function getIntialData() {
-
     //     const price1Data = await GetCoinData(Crypto1)
     //     const price2Data = await GetCoinData(Crypto2)
     //     price1Data && ConvertObject(setcoin1Data, price1Data)
@@ -81,24 +80,27 @@ function Compare() {
     useEffect(() => {
         getData()
     }, [])
-    async function getData() {
-        setisLoading(true);
-        const data1 = await GetCoinData(Crypto1);
-        if (data1) {
-            const data2 = await GetCoinData(Crypto2)
-            ConvertObject(setcoin1Data, data1)
-            if (data2) {
-                ConvertObject(setcoin2Data, data2);
-                const price1 = await GetCoinPrice(Crypto1, days, PriceType)
-                const price2 = await GetCoinPrice(Crypto2, days, PriceType)
-                SettingChartData(setChartData, price1, price2)
-                console.log(ChartData);
-                console.log(price1)
-                console.log(price2)
-                setisLoading(false)
-            }
+   
+    
+  
+   async function getData() {
+    setisLoading(true);
+    const data1 = await GetCoinData(Crypto1);
+    if (data1) {
+        const data2 = await GetCoinData(Crypto2)
+        ConvertObject(setcoin1Data, data1)
+        if (data2) {
+            ConvertObject(setcoin2Data, data2);
+            const price1 = await GetCoinPrice(Crypto1, days, PriceType)
+            const price2 = await GetCoinPrice(Crypto2, days, PriceType)
+            SettingChartData(setChartData, price1, price2)
+            console.log(ChartData);
+            console.log(price1)
+            console.log(price2)
+            setisLoading(false)
         }
     }
+}
     const handleChangeCrypto = async (event, isCrypto1) => {
         setisLoading(true)
         if (isCrypto1) {
@@ -109,6 +111,11 @@ function Compare() {
                 ConvertObject(setcoin1Data, price1Data)
                 setisLoading(false)
             }
+            // const price1 = await GetCoinPrice(event.target.value, days, PriceType)
+            // const price2 = await GetCoinPrice(Crypto2, days, PriceType)
+            // if(price1?.length>0&&price2?.length>0){
+            //     SettingChartData(setChartData, price1, price2)
+            // }
         } else {
             setCrypto2(event.target.value)
             console.log(event.target.value)
@@ -117,18 +124,26 @@ function Compare() {
                 ConvertObject(setcoin2Data, price2Data)
                 setisLoading(false)
             }
+            // const price2 = await GetCoinPrice(event.target.value, days, PriceType)
+            // const price1 = await GetCoinPrice(Crypto1, days, PriceType)
+            // if(price1?.length>0&&price2?.length>0){
+            //     SettingChartData(setChartData, price1, price2)
+            // }
         }
-        const price1 = await GetCoinPrice(Crypto1, days, "prices")
-        const price2 = await GetCoinPrice(Crypto2, days, "prices")
+        const price2 = await GetCoinPrice(Crypto2, days, PriceType)
+        const price1 = await GetCoinPrice(Crypto1, days, PriceType)
+        if(price1?.length>0&&price2?.length>0){
+            SettingChartData(setChartData, price1, price2)
+        }
     }
     const handleDaysChange = async (event) => {
         setdays(event.target.value);
         if (Crypto1 && Crypto2) {
-            const prices1 = await GetCoinPrice(Crypto1, days, "prices");
-            const prices2 = await GetCoinPrice(Crypto2, days, "prices");
+            const prices1 = await GetCoinPrice(Crypto1, days, PriceType);
+            const prices2 = await GetCoinPrice(Crypto2, days, PriceType);
             console.log(prices1, prices2);
             if (prices1?.length > 0 && prices2?.length > 0) {
-                // SettingChartData(setChartData, prices1, prices2)
+                SettingChartData(setChartData, prices1, prices2)
             }
         }
     };
@@ -145,7 +160,7 @@ function Compare() {
             <div className='listContsinerCoinPage'>
                 <List coin={coin2Data} />
             </div>
-            { <LineChart ChartData={ChartData} PriceType={"prices"} multiAxis={true} />}
+            { <LineChart ChartData={ChartData} PriceType={PriceType} multiAxis={true} />}
             <CoinInfo Heading={coin1Data?.name} desc={coin1Data?.desc} />
             <CoinInfo Heading={coin2Data?.name} desc={coin2Data?.desc} />
 

@@ -4,7 +4,24 @@ import '../MainComponent/LandingPage.css'
 import phoneImg from '../../../assets/phone1.png'
 import phoneGradientimg from '../../../assets/Phonegradient .png'
 import {motion} from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
 function LandingPage() {
+  const navigate = useNavigate(null)
+  const handleShareClick = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: "Github",
+          text: 'Check out this link!',
+          url: `https://github.com/GautamMarkande/crypto-tracker`,
+        });
+      } else {
+        alert('Web Share API is not supported in this browser.');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error.message);
+    }
+  };
   return (
     <div className='HomeContainer'>
       <div className="left_component">
@@ -34,8 +51,8 @@ function LandingPage() {
         animate={{opacity:1,x:0}}
         transition={{duration:0.5,delay:1.5,type:'smooth',}}
         >
-            <Button text={"Dashboard"} outlined={false}/>
-            <Button text={"Share"} outlined={true}/>
+            <Button text={"Dashboard"} outlined={false}  onClick={()=>navigate('/dashboard')}/>
+            <Button text={"Share"} outlined={true} onClick={handleShareClick}/>
         </motion.div>
       </div>
       <div className="phone">

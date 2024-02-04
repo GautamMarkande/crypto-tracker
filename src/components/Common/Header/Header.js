@@ -18,9 +18,9 @@ function Header() {
                 <Link to="/compare" assName='link'>
                     Compare
                 </Link>
-                <Link to="/watchlist" assName='link'>
+                {/* <Link to="/watchlist" assName='link'>
                     Watchlist
-                </Link>
+                </Link> */}
                 <Link to="/dashboard" assName='link'>
                     <Button text={"Dashboard"} outlined={true} onClick={()=>console.log("Btn clicked")}/>
                 </Link>

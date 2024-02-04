@@ -14,7 +14,7 @@ export default function SelectCoin({handleChangeCrypto,Crypto1,Crypto2}) {
     }
     useEffect(()=>{
       getCoins()
-    },[])
+    },[Crypto1,Crypto2])
 
     
   return (
